@@ -15,4 +15,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="TextStyle">
+        <item name="android:letterSpacing">0.12</item>
+    </style>
+
 </resources>

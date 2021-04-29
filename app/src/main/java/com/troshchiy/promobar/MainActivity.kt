@@ -8,7 +8,7 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ImageSpan
 import android.text.style.ReplacementSpan
-import android.text.style.StyleSpan
+import android.text.style.TextAppearanceSpan
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.ChipDrawable
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val bounds = Rect()
 
         val details = "Get 30% off your first order with code"
-        val code = "JVN"
+        val code = "APPITUP"
         val button = "SEE DETAILS"
 
         val message = "$details $code $button"
@@ -47,10 +47,11 @@ class MainActivity : AppCompatActivity() {
 
         val promoCodeStart = details.length + 1
         val promoCodeEnd = promoCodeStart + code.length
-        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         builder.setSpan(RoundedBackgroundSpan(this), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.oneLineBanner.text = builder
     }
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 class RoundedBackgroundSpan(
     context: Context,
     @ColorInt private val textColor: Int = context.resources.getColor(R.color.black, null),
-    @ColorInt private val backgroundColor: Int = context.resources.getColor(R.color.purple_200, null)
+    @ColorInt private val backgroundColor: Int = context.resources.getColor(R.color.spot_coral_light, null)
 ) : ReplacementSpan() {
 
     private val additionalVerticalPadding = 4.toPx().toFloat()
