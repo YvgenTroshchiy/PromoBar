@@ -2,15 +2,13 @@ package com.troshchiy.promobar
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Rect
-import android.graphics.RectF
+import android.graphics.*
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ImageSpan
 import android.text.style.ReplacementSpan
+import android.text.style.StyleSpan
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.ChipDrawable
@@ -43,15 +41,18 @@ class MainActivity : AppCompatActivity() {
         chipDrawable.setBounds(0, 0, chipDrawable.intrinsicWidth, chipDrawable.intrinsicHeight)
         chipDrawable.text = code
 
-        val ssb = SpannableStringBuilder(message)
+        val builder = SpannableStringBuilder(message)
         val span = ImageSpan(chipDrawable)
 //        ssb.setSpan(span, details.length, details.length + code.length + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        val start = details.length + 1
-        val end = start + code.length
-        ssb.setSpan(RoundedBackgroundSpan(this), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        val promoCodeStart = details.length + 1
+        val promoCodeEnd = promoCodeStart + code.length
+        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        builder.setSpan(RoundedBackgroundSpan(this), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        binding.oneLineBanner.text = ssb
+        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        binding.oneLineBanner.text = builder
     }
 }
 
