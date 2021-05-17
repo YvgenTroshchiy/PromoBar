@@ -1,6 +1,5 @@
 package com.troshchiy.promobar
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         updateOneLineBanner()
 
-        updateBanner()
+        binding.promoBanner.update(details, code, button)
     }
 
     private fun updateOneLineBanner() {
@@ -39,21 +38,6 @@ class MainActivity : AppCompatActivity() {
         builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.oneLineBanner.text = builder
-    }
-
-    private fun updateBanner() {
-        val bounds = Rect()
-        val descriptionPaint = binding.description.paint
-
-        descriptionPaint.getTextBounds(details, 0, details.length, bounds)
-
-        val fontMetrics = descriptionPaint.fontMetrics
-        val measureText = descriptionPaint.measureText(details)
-
-        val height: Int = bounds.height()
-        val width: Int = bounds.width()
-
-        val promoBannerWidth = binding.promoBanner.width
     }
 }
 
