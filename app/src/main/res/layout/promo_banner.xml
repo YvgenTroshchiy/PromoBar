@@ -15,7 +15,7 @@
     <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="description,code,details"
+        app:constraint_referenced_ids="description,code,see_details"
         app:flow_horizontalGap="12dp"
         app:flow_horizontalStyle="packed"
         app:flow_verticalGap="6dp"
@@ -45,17 +45,17 @@
         android:paddingTop="2dp"
         android:paddingEnd="8dp"
         android:paddingBottom="2dp"
-        android:text="JVN"
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints, HardcodedText" />
+        tools:ignore="MissingConstraints, HardcodedText"
+        tools:text="JVN" />
 
     <TextView
-        android:id="@+id/details"
+        android:id="@+id/see_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="SEE DETAILS"
         android:textColor="@color/white"
-        tools:ignore="MissingConstraints, HardcodedText" />
+        tools:ignore="MissingConstraints, HardcodedText"
+        tools:text="SEE DETAILS" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

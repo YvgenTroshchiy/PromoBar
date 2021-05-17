@@ -2,7 +2,9 @@ package com.troshchiy.promobar
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.troshchiy.promobar.databinding.PromoBannerBinding
 
 class PromoBanner @JvmOverloads constructor(
     context: Context,
@@ -10,8 +12,9 @@ class PromoBanner @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    var binding: PromoBannerBinding = PromoBannerBinding.inflate(LayoutInflater.from(context), this, true)
+
     init {
-        inflate(context, R.layout.promo_banner, this)
 
 //    private fun updateBanner() {
 //        val bounds = Rect()
@@ -56,5 +59,9 @@ class PromoBanner @JvmOverloads constructor(
     }
 
     fun update(details: String, code: String, button: String) {
+
+        binding.description.text = details
+        binding.code.text = code
+        binding.seeDetails.text = button
     }
 }
