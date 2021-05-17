@@ -20,9 +20,10 @@ class RoundedBackgroundSpan(
     @ColorInt private val backgroundColor: Int = context.resources.getColor(R.color.spot_coral_light, null)
 ) : ReplacementSpan() {
 
+    private val cornerRadius = 4.toPx().toFloat()
+
     private val additionalVerticalPadding = 4.toPx().toFloat()
     private val additionalHorizontalPadding = 8.toPx().toFloat()
-    private val cornerRadius = 4.toPx().toFloat()
 
     override fun draw(canvas: Canvas, text: CharSequence, start: Int, end: Int, x: Float, top: Int, y: Int, bottom: Int, paint: Paint) {
         val newTop = y - additionalVerticalPadding + paint.fontMetrics.ascent
