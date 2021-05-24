@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         updateOneLineBanner()
 
-        binding.promoBanner.update(details, code, button)
+//        binding.promoBanner.update(details, code, button)
     }
 
     private fun updateOneLineBanner() {
