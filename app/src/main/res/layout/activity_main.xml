@@ -36,10 +36,10 @@
             android:id="@+id/arrow_right"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#C16A6A"
-            app:layout_constraintBottom_toBottomOf="@+id/oneLineBanner"
-            app:layout_constraintStart_toEndOf="@+id/oneLineBanner"
-            app:layout_constraintTop_toTopOf="@+id/oneLineBanner" />
+            android:background="#E89191"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/oneLineBanner"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
