@@ -39,6 +39,6 @@ class PromoBanner @JvmOverloads constructor(
 
         builder.setSpan(TextAppearanceSpan(context, R.style.TextStyle), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        binding.oneLineBanner.text = builder
+        binding.message.text = builder
     }
 }
