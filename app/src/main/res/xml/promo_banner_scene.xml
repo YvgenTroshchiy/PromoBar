@@ -9,7 +9,7 @@
         <OnSwipe
             motion:dragDirection="dragRight"
             motion:maxAcceleration="40"
-            motion:touchAnchorId="@id/arrow_right"
+            motion:touchAnchorId="@id/cemicircle"
             motion:touchAnchorSide="right" />
     </Transition>
 

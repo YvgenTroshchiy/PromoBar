@@ -33,7 +33,6 @@ class PromoBanner @JvmOverloads constructor(
         val builder = SpannableStringBuilder(message)
         val promoCodeStart = details.length + 1
         val promoCodeEnd = promoCodeStart + code.length
-        //        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         builder.setSpan(TextAppearanceSpan(context, R.style.TextStyle), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         builder.setSpan(RoundedBackgroundSpan(context), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
