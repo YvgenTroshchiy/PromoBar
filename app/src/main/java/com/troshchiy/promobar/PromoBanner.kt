@@ -26,7 +26,7 @@ class PromoBanner @JvmOverloads constructor(
     var binding: PromoBannerBinding = PromoBannerBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-
+        binding.close.setOnClickListener { visibility = GONE }
     }
 
     fun updateOneLineBanner() {
