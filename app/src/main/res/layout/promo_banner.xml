@@ -40,16 +40,23 @@
         app:layout_constraintTop_toTopOf="@id/message"
         app:tint="@color/white" />
 
-    <ImageView
-        android:id="@+id/cemicircle"
+    <!-- Open Badge -->
+    <FrameLayout
+        android:id="@+id/openBadge"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:background="#E89191"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_cemicircle"
         app:layout_constraintBottom_toBottomOf="@id/message"
         app:layout_constraintStart_toEndOf="@id/message"
-        app:layout_constraintTop_toTopOf="@id/message" />
+        app:layout_constraintTop_toTopOf="@id/message">
+
+        <ImageView
+            android:id="@+id/cemicircle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_cemicircle" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

@@ -8,8 +8,8 @@
         motion:duration="1000">
         <OnSwipe
             motion:dragDirection="dragRight"
-            motion:maxAcceleration="40"
-            motion:touchAnchorId="@id/cemicircle"
+            motion:maxAcceleration="50"
+            motion:touchAnchorId="@id/openBadge"
             motion:touchAnchorSide="right" />
     </Transition>
 
