@@ -8,6 +8,7 @@
         motion:duration="1000">
         <OnSwipe
             motion:dragDirection="dragRight"
+            motion:maxAcceleration="40"
             motion:touchAnchorId="@id/arrow_right"
             motion:touchAnchorSide="right" />
     </Transition>

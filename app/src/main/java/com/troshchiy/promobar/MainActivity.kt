@@ -22,22 +22,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        updateOneLineBanner()
+//        updateOneLineBanner()
 
 //        binding.promoBanner.update(details, code, button)
     }
 
-    private fun updateOneLineBanner() {
-        val builder = SpannableStringBuilder(message)
-        val promoCodeStart = details.length + 1
-        val promoCodeEnd = promoCodeStart + code.length
-        //        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        builder.setSpan(RoundedBackgroundSpan(this), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        binding.oneLineBanner.text = builder
-    }
+//    private fun updateOneLineBanner() {
+//        val builder = SpannableStringBuilder(message)
+//        val promoCodeStart = details.length + 1
+//        val promoCodeEnd = promoCodeStart + code.length
+//        //        builder.setSpan(StyleSpan(Typeface.BOLD), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        builder.setSpan(RoundedBackgroundSpan(this), promoCodeStart, promoCodeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//
+//        builder.setSpan(TextAppearanceSpan(this, R.style.TextStyle), promoCodeEnd + 1, promoCodeEnd + 1 + button.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//
+//        binding.oneLineBanner.text = builder
+//    }
 }
 
