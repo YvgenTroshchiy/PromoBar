@@ -11,7 +11,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <TextView
-        android:id="@+id/oneLineBanner"
+        android:id="@+id/message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/black"
@@ -36,8 +36,8 @@
         android:layout_height="12dp"
         android:layout_margin="10dp"
         android:src="@drawable/ic_close_gray_16"
-        app:layout_constraintEnd_toEndOf="@id/oneLineBanner"
-        app:layout_constraintTop_toTopOf="@id/oneLineBanner"
+        app:layout_constraintEnd_toEndOf="@id/message"
+        app:layout_constraintTop_toTopOf="@id/message"
         app:tint="@color/white" />
 
     <ImageView
@@ -47,8 +47,8 @@
         android:background="#E89191"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_cemicircle"
-        app:layout_constraintBottom_toBottomOf="@id/oneLineBanner"
-        app:layout_constraintStart_toEndOf="@id/oneLineBanner"
-        app:layout_constraintTop_toTopOf="@id/oneLineBanner" />
+        app:layout_constraintBottom_toBottomOf="@id/message"
+        app:layout_constraintStart_toEndOf="@id/message"
+        app:layout_constraintTop_toTopOf="@id/message" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

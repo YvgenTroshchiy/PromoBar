@@ -14,7 +14,7 @@
     </Transition>
 
     <ConstraintSet android:id="@+id/base_state">
-        <Constraint android:id="@id/oneLineBanner">
+        <Constraint android:id="@id/message">
             <Layout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
