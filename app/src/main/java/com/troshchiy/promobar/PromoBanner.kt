@@ -6,24 +6,12 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
 import android.widget.FrameLayout
-import android.widget.Toast
 import com.troshchiy.promobar.databinding.PromoBannerBinding
 
 @SuppressLint("ClickableViewAccessibility")
-fun View.setOnClick(clickEvent: () -> Unit) {
-    setOnTouchListener { _, event ->
-        if (event.action == MotionEvent.ACTION_UP) {
-            clickEvent.invoke()
-            return@setOnTouchListener true
-        }
-        return@setOnTouchListener false
-    }
-}
-
 class PromoBanner @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -38,16 +26,22 @@ class PromoBanner @JvmOverloads constructor(
 
     private val message = "$details $code $button"
 
-    var binding: PromoBannerBinding = PromoBannerBinding.inflate(LayoutInflater.from(context), this, true)
+    private var binding: PromoBannerBinding = PromoBannerBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-//        binding.message.setOnClick {
+//        binding.message.setOnClickListener {
 //            Toast.makeText(context, "message", Toast.LENGTH_SHORT).show()
 //        }
+        binding.motionLayout.setOnTouchListener { v, event ->
+            Log.i("PromoBanner", "event: $event")
+            return@setOnTouchListener false
+        }
+        binding.close.setExpandedTouchArea(12F)
         binding.close.setOnClickListener { visibility = GONE }
-//        binding.openBadge.setOnClick {
-//            Toast.makeText(context, "openBadge", Toast.LENGTH_SHORT).show()
-//        }
+
+         binding.motionLayout.setOnClickListener {
+            Log.w("PromoBanner", "setOnClickListener")
+         }
     }
 
     fun updateOneLineBanner() {
@@ -61,8 +55,4 @@ class PromoBanner @JvmOverloads constructor(
 
         binding.message.text = builder
     }
-
-//    fun toggleBroadcasting(v: View?) {
-//        binding.motionLayout.transitionToEnd()
-//    }
 }
