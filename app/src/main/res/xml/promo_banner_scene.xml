@@ -7,13 +7,13 @@
         motion:constraintSetStart="@id/base_state"
         motion:duration="1000">
         <OnSwipe
-            motion:dragDirection="dragRight"
+            motion:dragDirection="dragStart"
             motion:maxAcceleration="50"
             motion:touchAnchorId="@id/openBadge"
             motion:touchAnchorSide="right" />
     </Transition>
 
-    <ConstraintSet android:id="@+id/base_state">
+    <ConstraintSet android:id="@+id/end_state">
         <Constraint android:id="@id/message">
             <Layout
                 android:layout_width="wrap_content"
@@ -24,6 +24,6 @@
         </Constraint>
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/end_state" />
+    <ConstraintSet android:id="@+id/base_state" />
 
 </MotionScene>
