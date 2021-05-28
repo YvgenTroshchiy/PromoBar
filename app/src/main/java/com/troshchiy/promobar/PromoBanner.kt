@@ -33,15 +33,15 @@ class PromoBanner @JvmOverloads constructor(
 //            Toast.makeText(context, "message", Toast.LENGTH_SHORT).show()
 //        }
         binding.motionLayout.setOnTouchListener { v, event ->
-            Log.i("PromoBanner", "event: $event")
+            Log.i(tag, "event: $event")
             return@setOnTouchListener false
         }
         binding.close.setExpandedTouchArea(12F)
         binding.close.setOnClickListener { visibility = GONE }
 
-         binding.motionLayout.setOnClickListener {
-            Log.w("PromoBanner", "setOnClickListener")
-         }
+        binding.motionLayout.setOnClickListener {
+            Log.w(tag, "setOnClickListener")
+        }
     }
 
     fun updateOneLineBanner() {
