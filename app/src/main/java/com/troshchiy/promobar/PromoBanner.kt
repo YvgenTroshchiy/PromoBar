@@ -1,12 +1,15 @@
 package com.troshchiy.promobar
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
@@ -48,11 +51,10 @@ class PromoBanner @JvmOverloads constructor(
                 }
                 MotionEvent.ACTION_UP -> {
                     if (previousTouchedX == event.x && previousTouchedY == event.y) {
-                        // Is Click action
                         if (System.currentTimeMillis() - previousTouchTime >= ViewConfiguration.getLongPressTimeout()) {
-                            Toast.makeText(context, "OnClick", Toast.LENGTH_SHORT).show()
+                            onLongClick(context)
                         } else {
-                            Toast.makeText(context, "OnLongClick", Toast.LENGTH_SHORT).show()
+                            onClick(context)
                         }
                     }
                 }
@@ -63,6 +65,20 @@ class PromoBanner @JvmOverloads constructor(
 
         binding.close.setExpandedTouchArea(12F)
         binding.close.setOnClickListener { visibility = GONE }
+    }
+
+    private fun onLongClick(context: Context) {
+        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(code, code)
+        clipboard.setPrimaryClip(clip)
+
+        Toast.makeText(context, context.getString(R.string.coupon_code_copied), Toast.LENGTH_SHORT).apply {
+            setGravity(Gravity.BOTTOM or Gravity.RIGHT, 50, 50)
+        }.show()
+    }
+
+    private fun onClick(context: Context) {
+        Toast.makeText(context, "OnClick", Toast.LENGTH_SHORT).show()
     }
 
     fun updateOneLineBanner() {

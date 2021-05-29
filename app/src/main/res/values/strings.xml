@@ -1,3 +1,7 @@
 <resources>
+
     <string name="app_name">PromoBar</string>
+
+    <string name="coupon_code_copied">Coupon code copied to clipboard</string>
+
 </resources>
