@@ -9,7 +9,6 @@ import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
@@ -69,12 +68,9 @@ class PromoBanner @JvmOverloads constructor(
 
     private fun onLongClick(context: Context) {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText(code, code)
-        clipboard.setPrimaryClip(clip)
+        clipboard.setPrimaryClip(ClipData.newPlainText(code, code))
 
-        Toast.makeText(context, context.getString(R.string.coupon_code_copied), Toast.LENGTH_SHORT).apply {
-            setGravity(Gravity.BOTTOM or Gravity.RIGHT, 50, 50)
-        }.show()
+        Toast.makeText(context, context.getString(R.string.coupon_code_copied), Toast.LENGTH_SHORT).show()
     }
 
     private fun onClick(context: Context) {
