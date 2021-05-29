@@ -8,7 +8,6 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
@@ -33,15 +32,14 @@ class PromoBanner @JvmOverloads constructor(
 
     private var binding: PromoBannerBinding = PromoBannerBinding.inflate(LayoutInflater.from(context), this, true)
 
+    private var previousTouchTime = 0L
+    private var previousTouchedX = 0F
+    private var previousTouchedY = 0F
+
     init {
-        var previousTouchTime = 0L
-        var previousTouchedX = 0F
-        var previousTouchedY = 0F
 
         // If we set onClick to the message view it consumes click and motionLayout will not work.
         binding.motionLayout.setOnTouchListener { v, event ->
-            Log.i(tag, "event: $event")
-
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     previousTouchTime = System.currentTimeMillis()
