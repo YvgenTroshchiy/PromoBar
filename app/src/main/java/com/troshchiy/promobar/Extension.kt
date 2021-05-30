@@ -6,6 +6,9 @@ import android.view.TouchDelegate
 import android.view.View
 import androidx.core.view.doOnLayout
 
+val Int.dpToPx: Int
+    get() = toFloat().dpToPx
+
 val Float.dpToPx: Int
     get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
 

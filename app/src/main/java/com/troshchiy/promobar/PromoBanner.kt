@@ -8,6 +8,7 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
@@ -32,27 +33,42 @@ class PromoBanner @JvmOverloads constructor(
 
     private var binding: PromoBannerBinding = PromoBannerBinding.inflate(LayoutInflater.from(context), this, true)
 
+    private val longPressThreshold = 4.dpToPx
+
     private var previousTouchTime = 0L
     private var previousTouchedX = 0F
     private var previousTouchedY = 0F
+    private var wasLongPressHandled = false
 
     init {
-
         // If we set onClick to the message view it consumes click and motionLayout will not work.
         binding.motionLayout.setOnTouchListener { v, event ->
+            Log.e(tag, "event: $event")
+
+            val longPressTimeout = ViewConfiguration.getLongPressTimeout()
+
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    wasLongPressHandled = false
                     previousTouchTime = System.currentTimeMillis()
                     previousTouchedX = event.x
                     previousTouchedY = event.y
                 }
+                MotionEvent.ACTION_MOVE -> {
+                    if (!wasLongPressHandled &&
+                        (System.currentTimeMillis() - previousTouchTime >= longPressTimeout) &&
+                        kotlin.math.abs(previousTouchedX - event.x) <= longPressThreshold &&
+                        kotlin.math.abs(previousTouchedY - event.y) <= longPressThreshold
+                    ) {
+                        wasLongPressHandled = true
+                        onLongClick(context)
+                    }
+                }
                 MotionEvent.ACTION_UP -> {
-                    if (previousTouchedX == event.x && previousTouchedY == event.y) {
-                        if (System.currentTimeMillis() - previousTouchTime >= ViewConfiguration.getLongPressTimeout()) {
-                            onLongClick(context)
-                        } else {
-                            onClick(context)
-                        }
+                    if ((System.currentTimeMillis() - previousTouchTime < longPressTimeout) &&
+                        previousTouchedX == event.x && previousTouchedY == event.y
+                    ) {
+                        onClick(context)
                     }
                 }
             }
